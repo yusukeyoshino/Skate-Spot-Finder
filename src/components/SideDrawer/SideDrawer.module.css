@@ -8,6 +8,7 @@
     z-index: 200;
     background-color: rebeccapurple;
 
+
     box-sizing:border-box;
     transition: transform 0.3s ease-out;
     border-radius: 2%;
@@ -39,4 +40,20 @@
 
 .Close{
     transform: translateX(-100%);
+}
+
+.SearchResults {
+    display:flex;
+    flex-direction: column;
+    align-self: start;
+    padding-left:15px;
+
+
+}
+
+.SearchResults div{
+    margin-top:50px;
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
 }
