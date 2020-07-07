@@ -6,7 +6,7 @@
     height:80%;
     max-width: 70%;
     z-index: 200;
-    background-color: rebeccapurple;
+    background: linear-gradient(#9542f5,#440b57) ;
 
 
     box-sizing:border-box;
@@ -55,5 +55,6 @@
     margin-top:50px;
     font-size: 20px;
     border-bottom: 1px solid white;
-    padding-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
 }

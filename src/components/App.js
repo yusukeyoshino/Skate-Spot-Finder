@@ -1,36 +1,42 @@
-import React,{Fragment,useState,useEffect} from 'react';
-import Header from './Header/Header';
-import Map from './Map/Map';
-import SideDrawer from './SideDrawer/SideDrawer';
-import * as parkData from '../data/skatespot.json';
+import React, { useState, useEffect } from "react";
+import Map from "./Map/Map";
+import About from "./About/About";
+import Layout from "./Layout/Layout";
+import Modal from "./UI/Modal/Modal";
+import SpotInfo from "../components/SpotInfo/SpotInfo";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const App = () => {
+  const [spotInfo, setSpotInfo] = useState(null);
 
-  const [allParkData,setAllParkData] = useState(parkData);
-  const [toggleSideDrawer,setToggleSideDrawer] = useState(false);
-  const [searchResults,setSearchResults] = useState(parkData.default.features);
+  // const toggleSideDrawerHandler = () => {
+  //   setToggleSideDrawer(!toggleSideDrawer);
+  //   console.log(toggleSideDrawer);
+  // };
 
+  // const spotDetail = (fields) => {
+  //   setSpotInfo(fields);
+  //   setIsSpotDetail(true);
+  // };
 
-  const toggleSideDrawerHandler = () => {
-    setToggleSideDrawer(!toggleSideDrawer);
-    console.log(toggleSideDrawer);
+  // const removeModal = () => {
+  //   setIsSpotDetail(false);
+  // };
+
+  const renderSpotInfo = () => {
+    return <div>{spotInfo.spotName}</div>;
   };
-
-  const inputValueHandler = (event) => {
-     const getResults = parkData.default.features.filter(park => {
-         return park.attributes.SPOTNAME.toLowerCase().includes(event.target.value)
-  })
-    setSearchResults(getResults);
-  };
-
 
   return (
-    <Fragment>
-      <Header clicked={toggleSideDrawerHandler}/>
-      <SideDrawer results={searchResults} isOpened={toggleSideDrawer} inputChange={inputValueHandler}/>
-      <Map results={searchResults}/>
-    </Fragment>
+    <>
+      <Router>
+        <Layout>
+          <Route path="/" exact component={Map} />
+          <Route path="/about" component={About} />
+        </Layout>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;

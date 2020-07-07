@@ -1,0 +1,23 @@
+.container {
+  width: 90vw;
+  height: 85vh;
+  display: flex;
+  background-color: white;
+}
+
+.left {
+  width: 100%;
+  background-image: url("../../assets/japan.png");
+  background-size: cover;
+
+  background-position: center;
+}
+.right {
+  width: 100%;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

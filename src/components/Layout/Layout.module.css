@@ -1,0 +1,81 @@
+.logo {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  color: white;
+  width: 100vw;
+  height: 7.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  min-width: 100px;
+  width: 10%;
+  max-width: 200px;
+}
+
+.nav_about {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  color: white;
+  width: 100vh;
+  height: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: top left;
+  transform: rotate(-90deg) translateX(-100%);
+  font-size: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease-out;
+}
+
+.nav_about_active {
+  transform: rotate(-90deg) translateX(-200%);
+}
+
+.nav_home {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  color: white;
+  width: 100vh;
+  height: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: top left;
+  transform: rotate(-90deg);
+  font-size: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease-out;
+}
+
+.nav_home_active {
+  transform: rotate(-90deg) translateX(-100%);
+}
+
+.container {
+  background-image: url("../../assets//tokyo.jpg");
+  background-size: cover;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: brightness(80%);
+  z-index: -1;
+}
