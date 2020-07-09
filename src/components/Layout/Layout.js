@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import classes from "./Layout.module.css";
 import logo from "../../assets/logo.png";
+import SideDrawer from "../SideDrawer/SideDrawer";
 
 const Layout = (props) => {
   const [isLinkClicked, setIsLinkClicked] = useState(false);
+  const [toggleSideDrawer, setToggleSideDrawer] = useState(false);
 
   const clickHandler = () => {
     setIsLinkClicked(!isLinkClicked);
@@ -21,7 +23,9 @@ const Layout = (props) => {
   return (
     <>
       <div className={classes.logo}>
-        <img src={logo} />
+        <Link to="/">
+          <img src={logo} />
+        </Link>
       </div>
       <nav className={navAboutClass}>
         <span onClick={clickHandler}>
@@ -33,6 +37,22 @@ const Layout = (props) => {
           <Link to="/">HOME</Link>
         </span>
       </nav>
+      <nav className={classes.addspot}>
+        <span onClick={clickHandler}>
+          <Link to="/addspot">ADD SPOT</Link>
+        </span>
+      </nav>
+      <div
+        onClick={() => setToggleSideDrawer(!toggleSideDrawer)}
+        className={classes.hamberger_icon}
+      >
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <SideDrawer isOpened={toggleSideDrawer} />
+
+      {/* MAIN */}
       <div className={classes.container}>{props.children}</div>
       <div>
         Icons made by{" "}

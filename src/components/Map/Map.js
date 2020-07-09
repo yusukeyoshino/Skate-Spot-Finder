@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, GeolocateControl, Popup } from "react-map-gl";
 import SpotInfo from "../SpotInfo/SpotInfo";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Map.module.css";
 import * as contentful from "contentful";
 
+const geolocateStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  margin: 10,
+};
+
 const Map = (props) => {
   const [spotData, setSpotData] = useState(null);
   const [isSpotDetail, setIsSpotDetail] = useState(false);
   const [spotInfo, setSpotInfo] = useState(null);
+  const [popupID, setPopupID] = useState(null);
 
   const [viewport, setViewport] = useState({
     width: "90vw",
@@ -41,24 +49,48 @@ const Map = (props) => {
     setIsSpotDetail(false);
   };
 
+  const showPopup = (e) => {
+    setPopupID(parseInt(e.target.id));
+  };
+  const hidePopup = (e) => {
+    setPopupID(null);
+  };
+
   const mapSpotData = () => {
     if (!spotData) {
       return;
     }
     return spotData.map(({ fields }) => (
-      <Marker
-        key={fields.id}
-        latitude={fields.geometry.lat}
-        longitude={fields.geometry.lon}
-      >
-        <button onClick={() => iconClick(fields)} className={classes.button}>
-          <img src="/skateboard.svg" alt="skate-logo" />
-        </button>
-        <div className={classes.popup}>
-          <p>{fields.spotName}</p>
-          <img src={`${fields.spotImage[0].fields.file.url}`} />
-        </div>
-      </Marker>
+      <>
+        <Marker
+          key={fields.id}
+          latitude={fields.geometry.lat}
+          longitude={fields.geometry.lon}
+        >
+          <button
+            onMouseEnter={showPopup}
+            onMouseLeave={hidePopup}
+            onClick={() => iconClick(fields)}
+            className={classes.button}
+          >
+            <img src="/skateboard.svg" alt="skate-logo" id={fields.id} />
+          </button>
+        </Marker>
+        {popupID === fields.id ? (
+          <Popup
+            className={classes.popup}
+            longitude={fields.geometry.lon}
+            latitude={fields.geometry.lat}
+            closeButton={false}
+            closeOnClick={false}
+          >
+            <p>{fields.spotName}</p>
+            <img src={`${fields.spotImage[0].fields.file.url}`} />
+          </Popup>
+        ) : (
+          <div></div>
+        )}
+      </>
     ));
   };
 
@@ -74,6 +106,12 @@ const Map = (props) => {
         mapStyle={"mapbox://styles/yusukeyoshino/ckaqtjf8u1a0g1io2vgm7nsp9"}
       >
         {mapSpotData()}
+        <GeolocateControl
+          positionOptions={{ enableHighAccuracy: true }}
+          trackUserLocation={true}
+          style={geolocateStyle}
+          //
+        />
       </ReactMapGL>
     </>
   );

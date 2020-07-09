@@ -24,6 +24,7 @@
   width: 100%;
   height: 150px;
   object-fit: cover;
+  z-index: 200;
 }
 .main_left p {
   font-size: 35px;
@@ -53,7 +54,8 @@
 }
 
 .youtube iframe {
-  width: 400px;
+  width: 100%;
+  max-width: 70%;
   height: 150px;
 }
 

@@ -1,60 +1,33 @@
-.SideDrawer{
-    position:fixed;
-    top: 60px;
-    left: 0;
-    width: 280px;
-    height:80%;
-    max-width: 70%;
-    z-index: 200;
-    background: linear-gradient(#9542f5,#440b57) ;
-
-
-    box-sizing:border-box;
-    transition: transform 0.3s ease-out;
-    border-radius: 2%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
+.SideDrawer {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 280px;
+  height: 80%;
+  max-width: 70%;
+  z-index: 200;
+  background: white;
+  opacity: 0.7;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  font-weight: bold;
 }
 
-.Title {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 30px 0;
+.SideDrawer a {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
-.Input{
-    width:90%;
-    height:30px;
-    background-color: white;
-    border-radius: 3%;
-    color: black;
-    font-size: 20px;
-    padding:0 10px;
+.Open {
+  transform: translateX(0);
 }
 
-.Open{
-    transform:translateX(0);
-}
-
-.Close{
-    transform: translateX(-100%);
-}
-
-.SearchResults {
-    display:flex;
-    flex-direction: column;
-    align-self: start;
-    padding-left:15px;
-
-
-}
-
-.SearchResults div{
-    margin-top:50px;
-    font-size: 20px;
-    border-bottom: 1px solid white;
-    padding: 5px;
-    border-radius: 5px;
+.Close {
+  transform: translateX(-100%);
 }
