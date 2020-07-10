@@ -53,7 +53,11 @@ const Layout = (props) => {
       <SideDrawer isOpened={toggleSideDrawer} />
 
       {/* MAIN */}
-      <div className={classes.container}>{props.children}</div>
+      <div className={classes.background}>
+        <div className={classes.container}>{props.children}</div>
+      </div>
+
+      {/* icon attribute */}
       <div>
         Icons made by{" "}
         <a href="https://www.flaticon.com/authors/freepik" title="Freepik">

@@ -65,7 +65,13 @@
 }
 
 .back {
-  padding-right: 30px;
-  text-align: right;
+  text-align: center;
   cursor: pointer;
+  margin-left: auto;
+  margin-right: 5px;
+  margin-top: 30px;
+  width: 40%;
+  border: 2px solid grey;
+  padding: 3px;
+  border-radius: 30px;
 }

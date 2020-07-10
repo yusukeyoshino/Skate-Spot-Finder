@@ -35,9 +35,9 @@ const SpotInfo = ({ info, remove }) => {
         >
           <span className={classes.mapLink}>Google Map</span>
         </a>
-        <p onClick={remove} className={classes.back}>
+        <div onClick={remove} className={classes.back}>
           back to map
-        </p>
+        </div>
       </div>
     </div>
   );
