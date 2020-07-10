@@ -18,26 +18,24 @@ const SpotInfo = ({ info, remove }) => {
 
   return (
     <div className={classes.main}>
-      <div className={classes.main_left}>
-        <p>{info.spotName}</p>
-        <div className={classes.spotImg}>
-          <img src={`https://${info.spotImage[0].fields.file.url}`} />
-        </div>
+      <p className={classes.title}>{info.spotName}</p>
+      <div className={classes.spotImg}>
+        <img src={`https://${info.spotImage[0].fields.file.url}`} />
       </div>
-      <div className={classes.main_right}>
-        <div className={classes.youtube}>
-          {parse(info.youtubeReference)}
-          <p>Spot appears at {youtubeStartTime()}</p>
-        </div>
-        Open in a{" "}
+      <div className={classes.youtube}>
+        {parse(info.youtubeReference)}
+        <p>Spot appears at {youtubeStartTime()}</p>
+      </div>
+      <span>
+        Open in{" "}
         <a
           href={`http://www.google.com/maps/place/${info.geometry.lat},${info.geometry.lon}`}
         >
           <span className={classes.mapLink}>Google Map</span>
         </a>
-        <div onClick={remove} className={classes.back}>
-          back to map
-        </div>
+      </span>
+      <div onClick={remove} className={classes.back}>
+        back to map
       </div>
     </div>
   );

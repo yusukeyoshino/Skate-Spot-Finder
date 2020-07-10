@@ -50,13 +50,15 @@ const Layout = (props) => {
         <div></div>
         <div></div>
       </div>
-      <SideDrawer isOpened={toggleSideDrawer} />
-
+      <SideDrawer
+        remove={() => setToggleSideDrawer(false)}
+        isOpened={toggleSideDrawer}
+      />
+      <div className={classes.background}></div>
       {/* MAIN */}
-      <div className={classes.background}>
+      <div className={classes.wrapper}>
         <div className={classes.container}>{props.children}</div>
       </div>
-
       {/* icon attribute */}
       <div>
         Icons made by{" "}
