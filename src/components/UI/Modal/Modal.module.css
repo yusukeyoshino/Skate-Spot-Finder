@@ -1,0 +1,29 @@
+.Modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 50vw;
+  height: 90vh;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  left: 25vw;
+  top: 7vh;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+  border-radius: 10px;
+}
+
+@media (max-width: 896px) {
+  .Modal {
+    width: 70vw;
+    left: 15vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .Modal {
+    top: 7vh;
+    width: 90vw;
+    left: 5vw;
+  }
+}
