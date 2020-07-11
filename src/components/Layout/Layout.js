@@ -60,15 +60,18 @@ const Layout = (props) => {
         <div className={classes.container}>{props.children}</div>
       </div>
       {/* icon attribute */}
-      <div>
-        Icons made by{" "}
-        <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-          Freepik
-        </a>{" "}
-        from{" "}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
+      <div className={classes.attribute}>
+        <div>
+          Icons made by{" "}
+          <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+            Freepik
+          </a>{" "}
+          from{" "}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
+        </div>
+        <div className={classes.copyright}>© 2020 POTY</div>
       </div>
     </>
   );
