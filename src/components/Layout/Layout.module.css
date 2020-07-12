@@ -166,4 +166,7 @@
   }
 }
 @media (max-width: 480px) {
+  .logo img {
+    width: 100px;
+  }
 }
