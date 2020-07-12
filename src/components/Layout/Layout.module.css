@@ -11,14 +11,17 @@
 }
 
 .logo a {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .logo img {
   min-width: 100px;
   width: 10%;
   max-width: 150px;
+  display: block;
+  height: auto;
 }
 
 .nav_about {
