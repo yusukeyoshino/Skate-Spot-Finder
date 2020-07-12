@@ -24,7 +24,7 @@ const Layout = (props) => {
     <>
       <div className={classes.logo}>
         <Link to="/">
-          <img src={logo} />
+          <img src={logo} alt="logo" />
         </Link>
       </div>
       <nav className={navAboutClass}>
