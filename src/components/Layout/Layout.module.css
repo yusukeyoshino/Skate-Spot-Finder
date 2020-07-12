@@ -167,6 +167,7 @@
 }
 @media (max-width: 480px) {
   .logo img {
-    width: 100px;
+    min-width: 70px;
+    max-width: 100%;
   }
 }
