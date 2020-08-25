@@ -1,4 +1,4 @@
-# movie-finder
+# Tokyo Street Spot Finder
 Demo Web page URL https://suspicious-banach-72df61.netlify.app/
  
 ## Overview
