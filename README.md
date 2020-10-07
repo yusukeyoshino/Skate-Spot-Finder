@@ -15,3 +15,5 @@ Street skate spots in Tokyo. Spots data is stored in contentful.
   etc
 
 # GIT-TEST
+
+More change by development
