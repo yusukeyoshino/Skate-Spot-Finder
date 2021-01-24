@@ -6,6 +6,8 @@ import AddSpot from "../components/AddSpot/AddSpot";
 import Modal from "./UI/Modal/Modal";
 import SpotInfo from "../components/SpotInfo/SpotInfo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import TermsAndCondition from "./TermsAndCondition/TermsAndCondition";
+import PrivacyAndPolicy from "./PrivacyAndPolicy/PrivacyAndPolicy";
 
 const App = () => {
   const [spotInfo, setSpotInfo] = useState(null);
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/" exact component={Map} />
           <Route path="/about" component={About} />
           <Route path="/addspot" component={AddSpot} />
+          <Route path="/terms-conditions" component={TermsAndCondition}/>
+          <Route path="/privacy-policy" component={PrivacyAndPolicy}/>
         </Layout>
       </Router>
     </>
