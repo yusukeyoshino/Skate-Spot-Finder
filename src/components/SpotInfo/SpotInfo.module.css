@@ -14,7 +14,6 @@
 
 .spotImg img {
   width: 60%;
-  height: 150px;
   object-fit: cover;
   z-index: 200;
   display: block;
