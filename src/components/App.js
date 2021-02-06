@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import firebase from "firebase/app";
+import "firebase/firestore";
 import Map from "./Map/Map";
 import About from "./About/About";
 import Layout from "./Layout/Layout";
@@ -8,6 +10,27 @@ import SpotInfo from "../components/SpotInfo/SpotInfo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import TermsAndCondition from "./TermsAndCondition/TermsAndCondition";
 import PrivacyAndPolicy from "./PrivacyAndPolicy/PrivacyAndPolicy";
+
+firebase.initializeApp({
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+});
+
+const db = firebase.firestore();
+
+db.collection("spot")
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} = ${doc.data().toString()}`);
+    });
+  });
 
 const App = () => {
   const [spotInfo, setSpotInfo] = useState(null);
@@ -37,8 +60,8 @@ const App = () => {
           <Route path="/" exact component={Map} />
           <Route path="/about" component={About} />
           <Route path="/addspot" component={AddSpot} />
-          <Route path="/terms-conditions" component={TermsAndCondition}/>
-          <Route path="/privacy-policy" component={PrivacyAndPolicy}/>
+          <Route path="/terms-conditions" component={TermsAndCondition} />
+          <Route path="/privacy-policy" component={PrivacyAndPolicy} />
         </Layout>
       </Router>
     </>
