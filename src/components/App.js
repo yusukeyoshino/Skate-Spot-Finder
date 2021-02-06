@@ -22,16 +22,6 @@ firebase.initializeApp({
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
 
-const db = firebase.firestore();
-
-db.collection("spot")
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} = ${doc.data().toString()}`);
-    });
-  });
-
 const App = () => {
   const [spotInfo, setSpotInfo] = useState(null);
 

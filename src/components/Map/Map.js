@@ -3,7 +3,8 @@ import ReactMapGL, { Marker, GeolocateControl, Popup } from "react-map-gl";
 import SpotInfo from "../SpotInfo/SpotInfo";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Map.module.css";
-import * as contentful from "contentful";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 const geolocateStyle = {
   position: "absolute",
@@ -26,13 +27,24 @@ const Map = (props) => {
     zoom: 12,
   });
 
-  const client = contentful.createClient({
-    space: process.env.REACT_APP_SPACE_ID,
-    accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
-  });
+  const db = firebase.firestore();
 
   useEffect(() => {
-    client.getEntries().then((response) => setSpotData(response.items));
+    let spots = [];
+    async function fetchData() {
+      await db
+        .collection("spot")
+        .get()
+        .then((querySnapshot) =>
+          querySnapshot.forEach((doc) => {
+            spots.push(doc.data());
+          })
+        );
+      console.log(spots);
+      setSpotData(spots);
+    }
+
+    fetchData();
   }, []);
 
   const iconClick = (fields) => {
@@ -60,32 +72,33 @@ const Map = (props) => {
     if (!spotData) {
       return;
     }
-    return spotData.map(({ fields }) => (
+
+    return spotData.map((spot) => (
       <>
         <Marker
-          key={fields.id}
-          latitude={fields.geometry.lat}
-          longitude={fields.geometry.lon}
+          key={spot.document_id}
+          latitude={spot.latitude}
+          longitude={spot.longitude}
         >
           <button
             onMouseEnter={showPopup}
             onMouseLeave={hidePopup}
-            onClick={() => iconClick(fields)}
+            onClick={() => iconClick(spot)}
             className={classes.button}
           >
-            <img src="/skateboard.svg" alt="skate-logo" id={fields.id} />
+            <img src="/skateboard.svg" alt="skate-logo" id={spot.id} />
           </button>
         </Marker>
-        {popupID === fields.id ? (
+        {popupID === spot.id ? (
           <Popup
             className={classes.popup}
-            longitude={fields.geometry.lon}
-            latitude={fields.geometry.lat}
+            longitude={spot.geometry.lon}
+            latitude={spot.geometry.lat}
             closeButton={false}
             closeOnClick={false}
           >
-            <p>{fields.spotName}</p>
-            <img src={`${fields.spotImage[0].fields.file.url}`} />
+            <p>{spot.spotName}</p>
+            <img src={`${spot.spotImage[0].spot.file.url}`} />
           </Popup>
         ) : (
           <div></div>
