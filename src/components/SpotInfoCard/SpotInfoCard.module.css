@@ -1,0 +1,60 @@
+.wrapper {
+  border-top: 1px solid #d3cdcd;
+  display: flex;
+  padding: 20px 0px;
+}
+
+.wrapper:first-child {
+  border-top: none;
+}
+
+.photo img {
+  width: 250px;
+  border-radius: 10px;
+}
+
+.descriptions {
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
+.prefecture {
+  font-size: 14px;
+  color: #d3cdcd;
+}
+
+.name {
+  margin-top: 8px;
+  font-size: 18px;
+  padding-bottom: 14px;
+  width: 100%;
+  font-weight: bold;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.name::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 1px;
+  background-color: #f1ebeb;
+
+  margin-top: 10px;
+}
+
+.spot_tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+@media (max-width: 960px) {
+  .wrapper {
+    display: none;
+  }
+}

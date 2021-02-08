@@ -5,6 +5,13 @@ import Modal from "../UI/Modal/Modal";
 import classes from "./Map.module.css";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import spotIcon from "../../assets/spot_icon.png";
+import shopIcon from "../../assets/shop_icon.png";
+import parkIcon from "../../assets/park_icon.png";
+import { render } from "@testing-library/react";
+import SpotsListView from "../../components/SpotsListView/SpotsListView";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const geolocateStyle = {
   position: "absolute",
@@ -14,10 +21,11 @@ const geolocateStyle = {
 };
 
 const Map = (props) => {
-  const [spotData, setSpotData] = useState(null);
+  const [spotData, setSpotData] = useState([]);
   const [isSpotDetail, setIsSpotDetail] = useState(false);
   const [spotInfo, setSpotInfo] = useState(null);
   const [popupID, setPopupID] = useState(null);
+  const [showSpotsList, setSpotsList] = useState(false);
 
   const [viewport, setViewport] = useState({
     width: "100%",
@@ -68,6 +76,16 @@ const Map = (props) => {
     setPopupID(null);
   };
 
+  const renderMarker = (spot) => {
+    if (spot.type.includes("shop")) {
+      return <img id={spot.document_id} alt="" src={shopIcon} />;
+    } else if (spot.type.includes("park")) {
+      return <img id={spot.document_id} alt="" src={parkIcon} />;
+    } else {
+      return <img id={spot.document_id} alt="" src={spotIcon} />;
+    }
+  };
+
   const mapSpotData = () => {
     if (!spotData) {
       return;
@@ -86,7 +104,7 @@ const Map = (props) => {
             onClick={() => iconClick(spot)}
             className={classes.button}
           >
-            <img src="/skateboard.svg" alt="skate-logo" id={spot.id} />
+            {renderMarker(spot)}
           </button>
         </Marker>
         {popupID === spot.id ? (
@@ -112,6 +130,17 @@ const Map = (props) => {
       <Modal remove={removeModal} show={isSpotDetail}>
         <SpotInfo remove={removeModal} info={spotInfo} />
       </Modal>
+      <FontAwesomeIcon
+        onClick={() => setSpotsList(true)}
+        className={classes.arrow}
+        icon={faAngleDoubleLeft}
+      />
+      <SpotsListView
+        spots={spotData}
+        show={showSpotsList}
+        setSpotsList={setSpotsList}
+        style={{ display: `${showSpotsList ? "block" : "none"}` }}
+      />
       <ReactMapGL
         {...viewport}
         onViewportChange={(viewport) => setViewport(viewport)}

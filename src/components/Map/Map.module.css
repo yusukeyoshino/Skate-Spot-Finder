@@ -6,6 +6,24 @@ img {
   width: 30px;
 }
 
+.arrow {
+  position: absolute;
+  z-index: 2;
+  margin: 15px;
+  font-size: 45px;
+  color: black;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  width: 45px;
+}
+
+@media (max-width: 960px) {
+  .arrow {
+    display: none;
+  }
+}
+
 .button {
   position: relative;
   z-index: 1;
