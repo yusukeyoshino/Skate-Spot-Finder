@@ -158,7 +158,7 @@
 @media (max-width: 1024px) {
 }
 
-@media (max-width: 896px) {
+@media (max-width: 960px) {
   .container {
     width: 100vw;
   }

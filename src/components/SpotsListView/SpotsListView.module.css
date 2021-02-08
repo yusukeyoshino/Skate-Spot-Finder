@@ -1,6 +1,6 @@
 .container {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   width: 45%;
   background-color: white;
 
@@ -15,6 +15,22 @@
   transform: translateX(0%);
 }
 
+@media (max-width: 960px) {
+  .container {
+    height: 19vh;
+    bottom: 7.5vh;
+    transform: translateX(0%);
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    bottom: 0;
+  }
+}
+
 .header {
   width: 91%;
   overflow: hidden;
@@ -26,6 +42,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+@media (max-width: 960px) {
+  .header {
+    display: none;
+  }
 }
 
 .header::after {
@@ -47,7 +69,15 @@
 }
 
 @media (max-width: 960px) {
-  .container {
-    display: none;
+  .lists {
+    display: flex;
+    height: auto;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 520px) {
+  .lists {
+    height: 19vh;
   }
 }
