@@ -24,6 +24,7 @@ firebase.initializeApp({
 
 const App = () => {
   const [spotInfo, setSpotInfo] = useState(null);
+  const [radio, setRadio] = useState("all");
 
   // const toggleSideDrawerHandler = () => {
   //   setToggleSideDrawer(!toggleSideDrawer);
@@ -46,8 +47,10 @@ const App = () => {
   return (
     <>
       <Router>
-        <Layout>
-          <Route path="/" exact component={Map} />
+        <Layout radio={radio} setRadio={setRadio}>
+          <Route path="/">
+            <Map radio={radio} />
+          </Route>
           <Route path="/about" component={About} />
           <Route path="/addspot" component={AddSpot} />
           <Route path="/terms-conditions" component={TermsAndCondition} />

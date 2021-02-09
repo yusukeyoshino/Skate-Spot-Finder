@@ -12,6 +12,8 @@ import { render } from "@testing-library/react";
 import SpotsListView from "../../components/SpotsListView/SpotsListView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
+import * as actions from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const geolocateStyle = {
   position: "absolute",
@@ -20,8 +22,9 @@ const geolocateStyle = {
   margin: 10,
 };
 
-const Map = (props) => {
-  const [spotData, setSpotData] = useState([]);
+const spotsSelector = (state) => state.spots;
+
+const Map = ({ radio }) => {
   const [isSpotDetail, setIsSpotDetail] = useState(false);
   const [spotInfo, setSpotInfo] = useState(null);
   const [popupID, setPopupID] = useState(null);
@@ -35,24 +38,14 @@ const Map = (props) => {
     zoom: 12,
   });
 
-  const db = firebase.firestore();
+  const dispatch = useDispatch();
+  const spotsState = useSelector(spotsSelector);
 
   useEffect(() => {
-    let spots = [];
-    async function fetchData() {
-      await db
-        .collection("spot")
-        .get()
-        .then((querySnapshot) =>
-          querySnapshot.forEach((doc) => {
-            spots.push(doc.data());
-          })
-        );
-      console.log(spots);
-      setSpotData(spots);
-    }
-
-    fetchData();
+    const getSpots = async () => {
+      await dispatch(actions.fetchSpots());
+    };
+    getSpots();
   }, []);
 
   const iconClick = (fields) => {
@@ -87,11 +80,11 @@ const Map = (props) => {
   };
 
   const mapSpotData = () => {
-    if (!spotData) {
+    if (!spotsState.selectedSpots) {
       return;
     }
 
-    return spotData.map((spot) => (
+    return spotsState.selectedSpots.map((spot) => (
       <>
         <Marker
           key={spot.document_id}
@@ -136,7 +129,7 @@ const Map = (props) => {
         icon={faAngleDoubleLeft}
       />
       <SpotsListView
-        spots={spotData}
+        spots={spotsState.selectedSpots}
         show={showSpotsList}
         setSpotsList={setSpotsList}
         style={{ display: `${showSpotsList ? "block" : "none"}` }}

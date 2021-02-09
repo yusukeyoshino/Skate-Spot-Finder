@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import classes from "./Layout.module.css";
 import logo from "../../assets/logo.png";
 import SideDrawer from "../SideDrawer/SideDrawer";
+import SpotsFilter from "../SpotsFilter/SpotsFilter";
 
 const Layout = (props) => {
   const [isLinkClicked, setIsLinkClicked] = useState(false);
@@ -26,6 +27,7 @@ const Layout = (props) => {
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
+        <SpotsFilter radio={props.radio} setRadio={props.setRadio} />
       </div>
       <nav className={navAboutClass}>
         <span onClick={clickHandler}>
