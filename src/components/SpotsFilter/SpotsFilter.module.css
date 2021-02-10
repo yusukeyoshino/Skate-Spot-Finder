@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  position: absolute;
+  right: 5vw;
+}
+
+@media (max-width: 960px) {
+  .wrapper {
+    display: none;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  margin: 0 10px;
+}
+
+.wrapper__mobile {
+  align-items: center;
+  font-weight: bold;
+  display: none;
+  position: absolute;
+  right: 3vw;
+}
+
+@media (max-width: 960px) {
+  .wrapper__mobile {
+    display: flex;
+    font-size: 15px;
+  }
+}
+
+.dropdown__icon {
+  margin-right: 10px;
+  display: block;
+}
+
+@media (max-width: 960px) {
+  .dropdown__icon {
+    width: 25px;
+  }
+}

@@ -37,8 +37,7 @@ const SpotInfoCard = ({ spot }) => {
       <div className={classes.descriptions}>
         <div className={classes.prefecture}>{`${spot.prefecture}`}</div>
         <div className={classes.name}>{`${spot.name}`}</div>
-
-        {SpotTags(spot)}
+        <div className={classes.spot__tags}>{SpotTags(spot)}</div>
       </div>
       <div className={classes.likes_logo}></div>
     </div>

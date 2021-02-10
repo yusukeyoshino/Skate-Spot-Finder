@@ -25,7 +25,7 @@ const Layout = (props) => {
     <>
       <div className={classes.logo}>
         <Link to="/">
-          <img src={logo} alt="logo" />
+          <img className={classes.logo_img} src={logo} alt="logo" />
         </Link>
         <SpotsFilter radio={props.radio} setRadio={props.setRadio} />
       </div>

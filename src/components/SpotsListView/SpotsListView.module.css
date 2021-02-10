@@ -17,8 +17,8 @@
 
 @media (max-width: 960px) {
   .container {
-    height: 19vh;
-    bottom: 7.5vh;
+    height: 22vh;
+    bottom: 0;
     transform: translateX(0%);
     width: 100%;
     padding: 0;
@@ -27,6 +27,10 @@
 
 @media (max-width: 520px) {
   .container {
+    display: flex;
+    align-items: center;
+    height: 20vh;
+    overflow: hidden;
     bottom: 0;
   }
 }
@@ -71,13 +75,13 @@
 @media (max-width: 960px) {
   .lists {
     display: flex;
-    height: auto;
+    height: 100%;
     margin-top: 0px;
   }
 }
 
 @media (max-width: 520px) {
   .lists {
-    height: 19vh;
+    height: 100%;
   }
 }

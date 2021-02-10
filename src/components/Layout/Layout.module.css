@@ -16,7 +16,7 @@
   align-items: flex-start;
 }
 
-.logo img {
+.logo_img {
   min-width: 100px;
   width: 10%;
   max-width: 150px;
@@ -169,8 +169,8 @@
   }
 }
 @media (max-width: 480px) {
-  .logo img {
-    min-width: 70px;
+  .logo_img {
+    min-width: 85px;
     max-width: 100%;
     height: auto;
   }
