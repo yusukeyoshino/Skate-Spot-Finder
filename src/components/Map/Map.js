@@ -31,14 +31,6 @@ const Map = ({ radio }) => {
   const [popupID, setPopupID] = useState(null);
   const [showSpotsList, setSpotsList] = useState(false);
 
-  // const [viewport, setViewport] = useState({
-  //   width: "100%",
-  //   height: "100%",
-  //   latitude: 35.676073,
-  //   longitude: 139.771753,
-  //   zoom: 12,
-  // });
-
   const dispatch = useDispatch();
   const spotsState = useSelector(spotsSelector);
   const viewPort = useSelector(viewPortSelector);
@@ -96,7 +88,6 @@ const Map = ({ radio }) => {
           <button
             onMouseEnter={showPopup}
             onMouseLeave={hidePopup}
-            onClick={() => iconClick(spot)}
             className={classes.button}
           >
             {renderMarker(spot)}
@@ -125,13 +116,14 @@ const Map = ({ radio }) => {
       <Modal remove={removeModal} show={isSpotDetail}>
         <SpotInfo remove={removeModal} info={spotInfo} />
       </Modal>
-      <div>
-        <FontAwesomeIcon
-          onClick={() => setSpotsList(true)}
-          className={classes.arrow}
-          icon={faAngleDoubleLeft}
-        />
-        {/* <span className={classes.spots_count}>{spotsState.spots.length}</span> */}
+      <div
+        className={classes.spots_list_button}
+        onClick={() => setSpotsList(true)}
+      >
+        <FontAwesomeIcon className={classes.arrow} icon={faAngleDoubleLeft} />
+        <span
+          className={classes.spots_count}
+        >{`${spotsState.spots.length} spots found`}</span>
       </div>
       <SpotsListView
         spots={spotsState.selectedSpots}
