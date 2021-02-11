@@ -23,6 +23,7 @@ const geolocateStyle = {
 };
 
 const spotsSelector = (state) => state.spots;
+const viewPortSelector = (state) => state.viewPort;
 
 const Map = ({ radio }) => {
   const [isSpotDetail, setIsSpotDetail] = useState(false);
@@ -30,16 +31,17 @@ const Map = ({ radio }) => {
   const [popupID, setPopupID] = useState(null);
   const [showSpotsList, setSpotsList] = useState(false);
 
-  const [viewport, setViewport] = useState({
-    width: "100%",
-    height: "100%",
-    latitude: 35.676073,
-    longitude: 139.771753,
-    zoom: 12,
-  });
+  // const [viewport, setViewport] = useState({
+  //   width: "100%",
+  //   height: "100%",
+  //   latitude: 35.676073,
+  //   longitude: 139.771753,
+  //   zoom: 12,
+  // });
 
   const dispatch = useDispatch();
   const spotsState = useSelector(spotsSelector);
+  const viewPort = useSelector(viewPortSelector);
 
   useEffect(() => {
     const getSpots = async () => {
@@ -85,7 +87,7 @@ const Map = ({ radio }) => {
     }
 
     return spotsState.selectedSpots.map((spot) => (
-      <>
+      <React.Fragment key={spot.document_id}>
         <Marker
           key={spot.document_id}
           latitude={spot.latitude}
@@ -114,7 +116,7 @@ const Map = ({ radio }) => {
         ) : (
           <div></div>
         )}
-      </>
+      </React.Fragment>
     ));
   };
 
@@ -123,11 +125,14 @@ const Map = ({ radio }) => {
       <Modal remove={removeModal} show={isSpotDetail}>
         <SpotInfo remove={removeModal} info={spotInfo} />
       </Modal>
-      <FontAwesomeIcon
-        onClick={() => setSpotsList(true)}
-        className={classes.arrow}
-        icon={faAngleDoubleLeft}
-      />
+      <div>
+        <FontAwesomeIcon
+          onClick={() => setSpotsList(true)}
+          className={classes.arrow}
+          icon={faAngleDoubleLeft}
+        />
+        {/* <span className={classes.spots_count}>{spotsState.spots.length}</span> */}
+      </div>
       <SpotsListView
         spots={spotsState.selectedSpots}
         show={showSpotsList}
@@ -135,8 +140,10 @@ const Map = ({ radio }) => {
         style={{ display: `${showSpotsList ? "block" : "none"}` }}
       />
       <ReactMapGL
-        {...viewport}
-        onViewportChange={(viewport) => setViewport(viewport)}
+        {...viewPort}
+        onViewportChange={(viewPort) => {
+          dispatch(actions.setViewPort(viewPort));
+        }}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         mapStyle={"mapbox://styles/yusukeyoshino/ckaqtjf8u1a0g1io2vgm7nsp9"}
       >

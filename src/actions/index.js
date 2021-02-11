@@ -1,6 +1,12 @@
-import { FILTER_SPOTS, FETCH_SPOTS } from "./types";
+import {
+  FILTER_SPOTS,
+  FETCH_SPOTS,
+  SET_VIEW_PORT,
+  SET_VIEW_PORT_TO_SPOT,
+} from "./types";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { FlyToInterpolator } from "react-map-gl";
 
 export const filterSpots = (spots, type) => {
   if (type === "all") {
@@ -33,4 +39,32 @@ export const fetchSpots = () => async (dispatch) => {
     type: FETCH_SPOTS,
     payload: spots,
   });
+};
+
+export const setViewPort = (viewPort) => {
+  const viewport = {
+    ...viewPort,
+  };
+
+  return { type: SET_VIEW_PORT, payload: viewport };
+};
+
+export const setViewPortToSpot = (spot) => {
+  let longitude;
+  if (window.innerWidth > 959) {
+    longitude = spot.longitude - 0.01;
+  } else {
+    longitude = spot.longitude;
+  }
+
+  const viewport = {
+    width: "100%",
+    height: "100%",
+    longitude: longitude,
+    latitude: spot.latitude,
+    zoom: 14,
+    transitionDuration: 1000,
+    transitionInterpolator: new FlyToInterpolator(),
+  };
+  return { type: SET_VIEW_PORT_TO_SPOT, payload: viewport };
 };

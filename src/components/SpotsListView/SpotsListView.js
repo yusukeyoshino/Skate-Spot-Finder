@@ -22,7 +22,7 @@ const SpotsListView = ({ spots, show, setSpotsList }) => {
         </div>
         <div className={classes.lists}>
           {spots.map((spot) => (
-            <SpotInfoCard spot={spot} />
+            <SpotInfoCard key={spot.document_id} spot={spot} />
           ))}
         </div>
       </div>
