@@ -1,7 +1,10 @@
 import classes from "./SpotInfoCard.module.css";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import * as actions from "../../actions";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
+const spotsSelector = (state) => state.spots;
 
 const SpotTags = (spot) => {
   return spot.type.map((type, index) => {
@@ -35,11 +38,28 @@ const SpotTags = (spot) => {
 
 const SpotInfoCard = ({ spot }) => {
   const dispatch = useDispatch();
+  const spotCardRef = useRef(null);
+  const spots = useSelector(spotsSelector).selectedSpots;
+
+  useEffect(() => {
+    let cardPosition;
+    if (window.innerWidth > 959) {
+      cardPosition = spotCardRef.current.offsetTop - 55;
+    } else {
+      cardPosition = spotCardRef.current.offsetLeft;
+    }
+
+    dispatch(actions.getSpotsPosition(cardPosition));
+  }, [spots]);
+
   return (
     <div
+      ref={spotCardRef}
       className={classes.wrapper}
-      onMouseEnter={() => dispatch(actions.setViewPortToSpot(spot))}
-      onClick={() => dispatch(actions.setViewPortToSpot(spot))}
+      onClick={() => {
+        dispatch(actions.setViewPortToSpot(spot));
+        dispatch(actions.selectSpot(spot));
+      }}
     >
       <div className={classes.photo}>
         <img src={spot.image_path} alt="" />

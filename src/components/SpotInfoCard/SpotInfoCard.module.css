@@ -2,6 +2,9 @@
   border-top: 1px solid #d3cdcd;
   display: flex;
   padding: 20px 0px;
+  height: 22vh;
+  align-items: center;
+  cursor: pointer;
 }
 
 .wrapper:first-child {
@@ -12,8 +15,9 @@
   .wrapper {
     padding-right: 10vw;
     border-right: 1px solid #d3cdcd;
-    padding-right: 10vw;
-    margin-left: 10vw;
+    padding-left: 10vw;
+    height: auto;
+    width: 80vw;
   }
   .wrapper:first-child {
   }
@@ -34,6 +38,7 @@
 .photo img {
   width: 250px;
   border-radius: 10px;
+  height: 18vh;
 }
 
 @media (max-width: 960px) {

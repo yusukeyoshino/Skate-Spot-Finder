@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import * as actions from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
+import selectedSpotReducer from "../../reducers/selectedSpotReducer";
 
 const geolocateStyle = {
   position: "absolute",
@@ -24,22 +25,24 @@ const geolocateStyle = {
 
 const spotsSelector = (state) => state.spots;
 const viewPortSelector = (state) => state.viewPort;
+const selectedSpotSelector = (state) => state.selectedSpot;
+const spotsPositionSelector = (state) => state.spotsPosition;
 
 const Map = ({ radio }) => {
   const [isSpotDetail, setIsSpotDetail] = useState(false);
   const [spotInfo, setSpotInfo] = useState(null);
   const [popupID, setPopupID] = useState(null);
   const [showSpotsList, setSpotsList] = useState(false);
+  const [showSearchButton, setShowSearchButton] = useState(true);
 
   const dispatch = useDispatch();
   const spotsState = useSelector(spotsSelector);
   const viewPort = useSelector(viewPortSelector);
+  const selectedSpot = useSelector(selectedSpotSelector);
+  const spotsPosition = useSelector(spotsPositionSelector);
 
   useEffect(() => {
-    const getSpots = async () => {
-      await dispatch(actions.fetchSpots());
-    };
-    getSpots();
+    dispatch(actions.fetchSpots());
   }, []);
 
   const iconClick = (fields) => {
@@ -73,12 +76,44 @@ const Map = ({ radio }) => {
     }
   };
 
+  const scaleIcon = (spot) => {
+    if (
+      selectedSpot !== null &&
+      selectedSpot.document_id === spot.document_id
+    ) {
+      return { transform: "scale(1.7)" };
+    } else {
+      return {};
+    }
+  };
+
+  const moveSpotsCards = (index) => {
+    const spotsListElement = window.document.getElementById("spots_list");
+    const cardPosition = spotsPosition[index];
+    console.log(cardPosition);
+    console.log(spotsPosition);
+
+    if (window.innerWidth > 959) {
+      spotsListElement.scrollTo({
+        top: cardPosition,
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      spotsListElement.scrollTo({
+        top: 0,
+        left: cardPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const mapSpotData = () => {
     if (!spotsState.selectedSpots) {
       return;
     }
 
-    return spotsState.selectedSpots.map((spot) => (
+    return spotsState.selectedSpots.map((spot, index) => (
       <React.Fragment key={spot.document_id}>
         <Marker
           key={spot.document_id}
@@ -86,11 +121,14 @@ const Map = ({ radio }) => {
           longitude={spot.longitude}
         >
           <button
+            onClick={() => moveSpotsCards(index)}
             onMouseEnter={showPopup}
             onMouseLeave={hidePopup}
             className={classes.button}
+            style={scaleIcon(spot)}
           >
             {renderMarker(spot)}
+            <div className={classes.marker_title}>{spot.name}</div>
           </button>
         </Marker>
         {popupID === spot.id ? (
@@ -125,6 +163,25 @@ const Map = ({ radio }) => {
           className={classes.spots_count}
         >{`${spotsState.spots.length} spots found`}</span>
       </div>
+      {showSearchButton ? (
+        <div
+          onClick={() => {
+            dispatch(actions.resetSpotsPosition());
+            setShowSearchButton(false);
+            const lat = viewPort.latitude;
+            const lon = viewPort.longitude;
+            dispatch(actions.fetchSpots(lat, lon));
+          }}
+          className={`${
+            showSpotsList ? classes.nearby_search_shrink : classes.nearby_search
+          }`}
+        >
+          Search this area
+        </div>
+      ) : (
+        ""
+      )}
+
       <SpotsListView
         spots={spotsState.selectedSpots}
         show={showSpotsList}
@@ -134,6 +191,7 @@ const Map = ({ radio }) => {
       <ReactMapGL
         {...viewPort}
         onViewportChange={(viewPort) => {
+          setShowSearchButton(true);
           dispatch(actions.setViewPort(viewPort));
         }}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}

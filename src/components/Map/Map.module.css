@@ -15,6 +15,7 @@ img {
   display: flex;
   align-items: center;
   padding: 5px;
+  cursor: pointer;
 }
 
 .spots_count {
@@ -28,15 +29,68 @@ img {
   margin-right: 10px;
 }
 
+.nearby_search {
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 3px 8px 11px 0px #806565;
+  width: 200px;
+  background-color: white;
+  border-radius: 20px;
+  top: 10vh;
+  padding: 10px;
+  color: #2885bb;
+  position: absolute;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.nearby_search_shrink {
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 3px 8px 11px 0px #806565;
+  width: 200px;
+  background-color: white;
+  border-radius: 20px;
+  top: 10vh;
+  padding: 10px;
+  color: #2885bb;
+  position: absolute;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+  left: 45vw;
+  right: 0;
+  text-align: center;
+  transition: all 1s;
+  cursor: pointer;
+}
+
 @media (max-width: 960px) {
   .spots_list_button {
     display: none;
   }
 }
 
+@media (max-width: 520px) {
+  .nearby_search {
+    width: 150px;
+    font-size: 11px;
+  }
+}
+
 .button {
   position: relative;
   z-index: 1;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .button img {
@@ -46,6 +100,16 @@ img {
 
 .button:hover img {
   transform: scale(1.3);
+}
+
+.marker_title {
+  font-size: 6px;
+  font-weight: bold;
+  width: 80px;
+  text-overflow: ellipsis;
+  overflow: auto;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .popup {

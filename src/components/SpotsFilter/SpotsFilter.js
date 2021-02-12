@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import classes from "./SpotsFilter.module.css";
 import allIcon from "../../assets/all_icon.png";
 import spotIcon from "../../assets/spot_icon.png";
@@ -13,7 +13,10 @@ const SpotsFilter = ({ radio, setRadio }) => {
   const dispatch = useDispatch();
   const spotsState = useSelector(spotsSelector);
 
+  const dropDownElement = useRef(null);
+
   const filterSpots = (type) => {
+    dispatch(actions.resetSpotsPosition());
     dispatch(actions.filterSpots(spotsState.spots, type));
   };
 
@@ -38,6 +41,8 @@ const SpotsFilter = ({ radio, setRadio }) => {
     setRadio(radioValue);
     filterSpots(radioValue);
   };
+
+  const onClickIconForDropdown = () => {};
 
   return (
     <>
@@ -124,14 +129,10 @@ const SpotsFilter = ({ radio, setRadio }) => {
         </div>
       </form>
 
-      <div
-        className={classes.wrapper__mobile}
-        onClick={(e) => {
-          getInputValue(e);
-        }}
-      >
+      <div className={classes.wrapper__mobile} onClick={onClickIconForDropdown}>
         <img src={renderIcon()} className={classes.dropdown__icon} />
         <select
+          ref={dropDownElement}
           value={radio}
           onChange={(e) => {
             setRadio(e.target.value);

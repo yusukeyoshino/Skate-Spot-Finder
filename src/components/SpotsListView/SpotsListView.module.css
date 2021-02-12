@@ -64,6 +64,7 @@
 
 .multiply {
   width: 45px;
+  cursor: pointer;
 }
 
 .lists {

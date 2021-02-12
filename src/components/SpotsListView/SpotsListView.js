@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "../SpotsListView/SpotsListView.module.css";
 import SpotInfoCard from "../../components/SpotInfoCard/SpotInfoCard";
+import * as actions from "../../actions";
+import { useDispatch } from "react-redux";
 
 const SpotsListView = ({ spots, show, setSpotsList }) => {
   //   const toggleListView = () => {
@@ -20,7 +22,7 @@ const SpotsListView = ({ spots, show, setSpotsList }) => {
             &#215;
           </div>
         </div>
-        <div className={classes.lists}>
+        <div className={classes.lists} id="spots_list">
           {spots.map((spot) => (
             <SpotInfoCard key={spot.document_id} spot={spot} />
           ))}
