@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "./Layout.module.css";
 import logo from "../../assets/logo.png";
 import SideDrawer from "../SideDrawer/SideDrawer";

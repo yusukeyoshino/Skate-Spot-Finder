@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import Map from "./Map/Map";
 import About from "./About/About";
 import Layout from "./Layout/Layout";
 import AddSpot from "../components/AddSpot/AddSpot";
-import Modal from "./UI/Modal/Modal";
-import SpotInfo from "../components/SpotInfo/SpotInfo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import TermsAndCondition from "./TermsAndCondition/TermsAndCondition";
 import PrivacyAndPolicy from "./PrivacyAndPolicy/PrivacyAndPolicy";
@@ -23,26 +21,7 @@ firebase.initializeApp({
 });
 
 const App = () => {
-  const [spotInfo, setSpotInfo] = useState(null);
   const [radio, setRadio] = useState("all");
-
-  // const toggleSideDrawerHandler = () => {
-  //   setToggleSideDrawer(!toggleSideDrawer);
-  //   console.log(toggleSideDrawer);
-  // };
-
-  // const spotDetail = (fields) => {
-  //   setSpotInfo(fields);
-  //   setIsSpotDetail(true);
-  // };
-
-  // const removeModal = () => {
-  //   setIsSpotDetail(false);
-  // };
-
-  const renderSpotInfo = () => {
-    return <div>{spotInfo.spotName}</div>;
-  };
 
   return (
     <>

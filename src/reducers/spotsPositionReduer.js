@@ -1,8 +1,4 @@
-import {
-  FILTER_SPOTS,
-  RESET_SPOTS_POSITION,
-  SPOTS_POSTION,
-} from "../actions/types";
+import { RESET_SPOTS_POSITION, SPOTS_POSTION } from "../actions/types";
 
 export default function (state = [], action) {
   switch (action.type) {

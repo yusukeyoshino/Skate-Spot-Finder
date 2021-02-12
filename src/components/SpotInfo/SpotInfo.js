@@ -20,7 +20,7 @@ const SpotInfo = ({ info, remove }) => {
     <div className={classes.main}>
       <p className={classes.title}>{info.spotName}</p>
       <div className={classes.spotImg}>
-        <img src={`https://${info.spotImage[0].fields.file.url}`} />
+        <img src={`https://${info.spotImage[0].fields.file.url}`} alt="" />
       </div>
       <div className={classes.youtube}>
         {parse(info.youtubeReference)}

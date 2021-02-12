@@ -10,7 +10,6 @@ import {
 } from "./types";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import * as geofirestore from "geofirestore";
 import { FlyToInterpolator } from "react-map-gl";
 const geofire = require("geofire-common");
 
@@ -79,7 +78,6 @@ export const fetchSpots = (lat = 35.6812, lon = 139.7671) => async (
       matchingDocs.forEach((doc) => {
         spots.push(doc.data());
       });
-      console.log(spots);
       dispatch({
         type: TOGGLE_SPINNER,
       });

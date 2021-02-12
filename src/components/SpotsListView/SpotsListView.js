@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import classes from "../SpotsListView/SpotsListView.module.css";
 import SpotInfoCard from "../../components/SpotInfoCard/SpotInfoCard";
-import * as actions from "../../actions";
-import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
-const spotsSelector = (state) => state.spots;
 const spinnerSelector = (state) => state.showSpinner;
 
 const SpotsListView = ({ spots, show, setSpotsList }) => {

@@ -3,18 +3,15 @@ import ReactMapGL, { Marker, GeolocateControl, Popup } from "react-map-gl";
 import SpotInfo from "../SpotInfo/SpotInfo";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Map.module.css";
-import firebase from "firebase/app";
 import "firebase/firestore";
 import spotIcon from "../../assets/spot_icon.png";
 import shopIcon from "../../assets/shop_icon.png";
 import parkIcon from "../../assets/park_icon.png";
-import { render } from "@testing-library/react";
 import SpotsListView from "../../components/SpotsListView/SpotsListView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import * as actions from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
-import selectedSpotReducer from "../../reducers/selectedSpotReducer";
 
 const geolocateStyle = {
   position: "absolute",
@@ -29,7 +26,7 @@ const selectedSpotSelector = (state) => state.selectedSpot;
 const spotsPositionSelector = (state) => state.spotsPosition;
 const spinnerSelector = (state) => state.showSpinner;
 
-const Map = ({ radio }) => {
+const Map = () => {
   const [isSpotDetail, setIsSpotDetail] = useState(false);
   const [spotInfo, setSpotInfo] = useState(null);
   const [popupID, setPopupID] = useState(null);
@@ -47,16 +44,6 @@ const Map = ({ radio }) => {
     dispatch(actions.toggleSpinner());
     dispatch(actions.fetchSpots());
   }, []);
-
-  const iconClick = (fields) => {
-    setSpotInfo(fields);
-    setIsSpotDetail(true);
-  };
-
-  const spotDetail = (fields) => {
-    setSpotInfo(fields);
-    setIsSpotDetail(true);
-  };
 
   const removeModal = () => {
     setIsSpotDetail(false);
@@ -93,8 +80,6 @@ const Map = ({ radio }) => {
   const moveSpotsCards = (index) => {
     const spotsListElement = window.document.getElementById("spots_list");
     const cardPosition = spotsPosition[index];
-    console.log(cardPosition);
-    console.log(spotsPosition);
 
     if (window.innerWidth > 959) {
       spotsListElement.scrollTo({
@@ -143,7 +128,7 @@ const Map = ({ radio }) => {
             closeOnClick={false}
           >
             <p>{spot.spotName}</p>
-            <img src={`${spot.spotImage[0].spot.file.url}`} />
+            <img src={`${spot.spotImage[0].spot.file.url}`} alt="" />
           </Popup>
         ) : (
           <div></div>
@@ -169,7 +154,6 @@ const Map = ({ radio }) => {
       {showSearchButton ? (
         <div
           onClick={() => {
-            console.log(showSpinner);
             dispatch(actions.resetSpotsPosition());
             dispatch(actions.toggleSpinner());
             const lat = viewPort.latitude;

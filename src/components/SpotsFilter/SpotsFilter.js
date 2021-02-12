@@ -130,7 +130,7 @@ const SpotsFilter = ({ radio, setRadio }) => {
       </form>
 
       <div className={classes.wrapper__mobile} onClick={onClickIconForDropdown}>
-        <img src={renderIcon()} className={classes.dropdown__icon} />
+        <img src={renderIcon()} className={classes.dropdown__icon} alt="" />
         <select
           ref={dropDownElement}
           value={radio}
