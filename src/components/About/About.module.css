@@ -23,7 +23,7 @@
   justify-content: center;
 }
 
-@media (max-width: 896px) {
+@media (max-width: 960px) {
   .right {
     font-size: 30px;
   }

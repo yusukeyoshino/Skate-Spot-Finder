@@ -6,6 +6,7 @@ import {
   SELECT_SPOT,
   SPOTS_POSTION,
   RESET_SPOTS_POSITION,
+  TOGGLE_SPINNER,
 } from "./types";
 import firebase from "firebase/app";
 import "firebase/firestore";
@@ -80,6 +81,9 @@ export const fetchSpots = (lat = 35.6812, lon = 139.7671) => async (
       });
       console.log(spots);
       dispatch({
+        type: TOGGLE_SPINNER,
+      });
+      dispatch({
         type: FETCH_SPOTS,
         payload: spots,
       });
@@ -138,4 +142,8 @@ export const getSpotsPosition = (position) => {
 
 export const resetSpotsPosition = () => {
   return { type: RESET_SPOTS_POSITION, payload: [] };
+};
+
+export const toggleSpinner = () => {
+  return { type: TOGGLE_SPINNER };
 };

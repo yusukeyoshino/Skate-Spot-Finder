@@ -5,3 +5,4 @@ export const SET_VIEW_PORT_TO_SPOT = "set_viewport_to_spot";
 export const SELECT_SPOT = "select_spot";
 export const SPOTS_POSTION = "spots_position";
 export const RESET_SPOTS_POSITION = "reset_spots_position";
+export const TOGGLE_SPINNER = "toggle_spinner";

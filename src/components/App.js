@@ -48,7 +48,7 @@ const App = () => {
     <>
       <Router>
         <Layout radio={radio} setRadio={setRadio}>
-          <Route path="/">
+          <Route path="/" exact>
             <Map radio={radio} />
           </Route>
           <Route path="/about" component={About} />

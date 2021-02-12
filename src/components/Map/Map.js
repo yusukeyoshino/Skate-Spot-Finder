@@ -27,6 +27,7 @@ const spotsSelector = (state) => state.spots;
 const viewPortSelector = (state) => state.viewPort;
 const selectedSpotSelector = (state) => state.selectedSpot;
 const spotsPositionSelector = (state) => state.spotsPosition;
+const spinnerSelector = (state) => state.showSpinner;
 
 const Map = ({ radio }) => {
   const [isSpotDetail, setIsSpotDetail] = useState(false);
@@ -40,8 +41,10 @@ const Map = ({ radio }) => {
   const viewPort = useSelector(viewPortSelector);
   const selectedSpot = useSelector(selectedSpotSelector);
   const spotsPosition = useSelector(spotsPositionSelector);
+  const showSpinner = useSelector(spinnerSelector);
 
   useEffect(() => {
+    dispatch(actions.toggleSpinner());
     dispatch(actions.fetchSpots());
   }, []);
 
@@ -166,8 +169,9 @@ const Map = ({ radio }) => {
       {showSearchButton ? (
         <div
           onClick={() => {
+            console.log(showSpinner);
             dispatch(actions.resetSpotsPosition());
-            setShowSearchButton(false);
+            dispatch(actions.toggleSpinner());
             const lat = viewPort.latitude;
             const lon = viewPort.longitude;
             dispatch(actions.fetchSpots(lat, lon));
@@ -176,7 +180,7 @@ const Map = ({ radio }) => {
             showSpotsList ? classes.nearby_search_shrink : classes.nearby_search
           }`}
         >
-          Search this area
+          {showSpinner ? "Searching..." : "Search this area"}
         </div>
       ) : (
         ""
