@@ -1,11 +1,14 @@
 # Tokyo Street Spot Finder
 
-Demo Web page URL https://suspicious-banach-72df61.netlify.app/
+Demo Web page URL https://potyskateboards.com
+
+![tokyo street spot finder](https://github.com/yusukeyoshino/portfolio/blob/master/src/images/ezgif.com-gif-maker.gif?raw=true)<br/>
+
+
 
 ## Overview
 
-Static React app using Mapbox API.
-Street skate spots in Tokyo. Spots data is stored in contentful.
+Skate spots finder using React, Mapbox API and Firebase.
 
 # Dependencies
 
@@ -14,4 +17,20 @@ Street skate spots in Tokyo. Spots data is stored in contentful.
 - contentful
   etc
 
-# GIT-TEST
+## How to use
+- 
+- 
+
+## Features
+
+
+
+## Specification
+Libraries:
+- React
+- React Hooks
+- React Router
+- Redux
+- Redux Thunk
+- Firebase
+- CSS Module
