@@ -28,6 +28,7 @@ Libraries:
 - React
 - React Hooks
 - React Router
+- React Map gl
 - Redux
 - Redux Thunk
 - Firebase
