@@ -16,6 +16,7 @@ const SideDrawer = (props) => {
         <Link to="/">map</Link>
         <Link to="/about">about</Link>
         <Link to="/addspot">add your spot</Link>
+        <div onClick={() => props.setShowModal(true)}>How to use</div>
         <Link to="/terms-conditions">terms and conditions</Link>
         <Link to="/privacy-policy">privacy and policy</Link>
       </div>

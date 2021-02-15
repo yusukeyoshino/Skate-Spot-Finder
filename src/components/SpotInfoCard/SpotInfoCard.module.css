@@ -65,6 +65,7 @@
   .descriptions {
     width: 40vw;
     display: flex;
+    height: 80%;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;

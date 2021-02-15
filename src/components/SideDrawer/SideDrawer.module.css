@@ -24,6 +24,13 @@
   margin-left: 10px;
 }
 
+.SideDrawer div {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 .Open {
   transform: translateX(0);
 }

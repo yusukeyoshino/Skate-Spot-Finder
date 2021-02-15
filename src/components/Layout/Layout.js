@@ -4,6 +4,7 @@ import classes from "./Layout.module.css";
 import logo from "../../assets/logo.png";
 import SideDrawer from "../SideDrawer/SideDrawer";
 import SpotsFilter from "../SpotsFilter/SpotsFilter";
+import HowToUse from "../HowToUse/HowToUse";
 
 const Layout = (props) => {
   const [isLinkClicked, setIsLinkClicked] = useState(false);
@@ -20,6 +21,8 @@ const Layout = (props) => {
   let navHomeClass = isLinkClicked
     ? [`${classes.nav_home} ${classes.nav_home_active}`]
     : [`${classes.nav_home}`];
+
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -52,7 +55,10 @@ const Layout = (props) => {
         <div></div>
         <div></div>
       </div>
+      <HowToUse showModal={showModal} setShowModal={setShowModal} />
       <SideDrawer
+        show={showModal}
+        setShowModal={setShowModal}
         remove={() => setToggleSideDrawer(false)}
         isOpened={toggleSideDrawer}
       />

@@ -119,29 +119,12 @@ const Map = () => {
             <div className={classes.marker_title}>{spot.name}</div>
           </button>
         </Marker>
-        {popupID === spot.id ? (
-          <Popup
-            className={classes.popup}
-            longitude={spot.geometry.lon}
-            latitude={spot.geometry.lat}
-            closeButton={false}
-            closeOnClick={false}
-          >
-            <p>{spot.spotName}</p>
-            <img src={`${spot.spotImage[0].spot.file.url}`} alt="" />
-          </Popup>
-        ) : (
-          <div></div>
-        )}
       </React.Fragment>
     ));
   };
 
   return (
     <>
-      <Modal remove={removeModal} show={isSpotDetail}>
-        <SpotInfo remove={removeModal} info={spotInfo} />
-      </Modal>
       <div
         className={classes.spots_list_button}
         onClick={() => setSpotsList(true)}
