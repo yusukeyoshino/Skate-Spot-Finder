@@ -109,7 +109,10 @@ const Map = () => {
           longitude={spot.longitude}
         >
           <button
-            onClick={() => moveSpotsCards(index)}
+            onClick={() => {
+              moveSpotsCards(index);
+              setSpotsList(true);
+            }}
             onMouseEnter={showPopup}
             onMouseLeave={hidePopup}
             className={classes.button}

@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
 .SideDrawer {
+  font-family: "Varela Round", sans-serif;
   position: fixed;
   top: 60px;
   left: 0;
@@ -16,16 +19,15 @@
   flex-direction: column;
   color: black;
   font-weight: bold;
+  font-size: 25px;
 }
 
 .SideDrawer a {
-  font-size: 30px;
   margin-top: 20px;
   margin-left: 10px;
 }
 
 .SideDrawer div {
-  font-size: 30px;
   margin-top: 20px;
   margin-left: 10px;
   cursor: pointer;
