@@ -85,8 +85,7 @@
 }
 
 .background {
-  background-image: url("../../assets//tokyo.jpg");
-  background-size: cover;
+  background-color: powderblue;
   margin: 0 auto;
   position: fixed;
   top: 0;
