@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
 .logo {
   position: fixed;
   top: 0;
@@ -39,6 +41,7 @@
   font-size: 30px;
   font-weight: bold;
   transition: all 0.3s ease-out;
+  font-family: "Varela Round", sans-serif;
 }
 
 .nav_about_active {
@@ -60,6 +63,7 @@
   font-size: 30px;
   font-weight: bold;
   transition: all 0.3s ease-out;
+  font-family: "Varela Round", sans-serif;
 }
 
 .nav_home_active {
@@ -67,6 +71,7 @@
 }
 
 .addspot {
+  font-family: "Varela Round", sans-serif;
   position: fixed;
   top: 0;
   right: 0;

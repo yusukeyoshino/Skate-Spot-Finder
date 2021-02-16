@@ -16,6 +16,7 @@ img {
   align-items: center;
   padding: 5px;
   cursor: pointer;
+  font-family: "Varela Round", sans-serif;
 }
 
 .spots_count {
