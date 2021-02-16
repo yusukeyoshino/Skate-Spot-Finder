@@ -111,7 +111,9 @@ const Map = () => {
           <button
             onClick={() => {
               moveSpotsCards(index);
-              setSpotsList(true);
+              if (window.innerWidth > 960) {
+                setSpotsList(true);
+              }
             }}
             onMouseEnter={showPopup}
             onMouseLeave={hidePopup}
