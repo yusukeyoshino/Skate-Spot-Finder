@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import classes from "./Layout.module.css";
 import logo from "../../assets/logo.png";
 import SideDrawer from "../SideDrawer/SideDrawer";
-import SpotsFilter from "../SpotsFilter/SpotsFilter";
+import SpotsFilter from "../Pages/Map/SpotsFilter/SpotsFilter";
 import HowToUse from "../HowToUse/HowToUse";
 
 const Layout = (props) => {

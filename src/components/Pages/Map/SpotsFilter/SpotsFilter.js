@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import classes from "./SpotsFilter.module.css";
-import allIcon from "../../assets/all_icon.png";
-import spotIcon from "../../assets/spot_icon.png";
-import parkIcon from "../../assets/park_icon.png";
-import shopIcon from "../../assets/shop_icon.png";
-import * as actions from "../../actions";
+import allIcon from "../../../../assets/all_icon.png";
+import spotIcon from "../../../../assets/spot_icon.png";
+import parkIcon from "../../../../assets/park_icon.png";
+import shopIcon from "../../../../assets/shop_icon.png";
+import * as actions from "../../../../actions";
 import { useSelector, useDispatch } from "react-redux";
 
 const spotsSelector = (state) => state.spots;

@@ -7,7 +7,6 @@ import spotIcon from "../../assets/spot_icon.png";
 import shopIcon from "../../assets/shop_icon.png";
 import parkIcon from "../../assets/park_icon.png";
 import demoPhoto from "../../assets/demo_photo.jpg";
-import SpotInfoCard from "../SpotInfoCard/SpotInfoCard";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,

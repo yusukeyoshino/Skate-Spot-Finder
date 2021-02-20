@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import Map from "./Map/Map";
-import About from "./About/About";
+import Map from "./Pages/Map/Map";
+import About from "./Pages/About/About";
 import Layout from "./Layout/Layout";
-import AddSpot from "../components/AddSpot/AddSpot";
+import AddSpot from "./Pages/AddSpot/AddSpot";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import TermsAndCondition from "./TermsAndCondition/TermsAndCondition";
-import PrivacyAndPolicy from "./PrivacyAndPolicy/PrivacyAndPolicy";
+import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
+import PrivacyAndPolicy from "./Pages/PrivacyAndPolicy/PrivacyAndPolicy";
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

@@ -1,7 +1,7 @@
 import classes from "./AddSpot.module.css";
 import React from "react";
-import appleBadge from "../../assets/apple_badge.svg";
-import screenShot from "../../assets/poty_screen.png";
+import appleBadge from "../../../assets/apple_badge.svg";
+import screenShot from "../../../assets/poty_screen.png";
 
 const AddSpot = () => {
   return (

@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import ReactMapGL, { Marker, GeolocateControl, Popup } from "react-map-gl";
-import SpotInfo from "../SpotInfo/SpotInfo";
-import Modal from "../UI/Modal/Modal";
+import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
 import classes from "./Map.module.css";
 import "firebase/firestore";
-import spotIcon from "../../assets/spot_icon.png";
-import shopIcon from "../../assets/shop_icon.png";
-import parkIcon from "../../assets/park_icon.png";
-import SpotsListView from "../../components/SpotsListView/SpotsListView";
+import spotIcon from "../../../assets/spot_icon.png";
+import shopIcon from "../../../assets/shop_icon.png";
+import parkIcon from "../../../assets/park_icon.png";
+import SpotsListView from "./SpotsListView/SpotsListView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
-import * as actions from "../../actions";
+import * as actions from "../../../actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const geolocateStyle = {

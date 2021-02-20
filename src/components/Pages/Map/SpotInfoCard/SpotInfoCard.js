@@ -1,6 +1,6 @@
 import classes from "./SpotInfoCard.module.css";
 import React, { useEffect, useRef } from "react";
-import * as actions from "../../actions";
+import * as actions from "../../../../actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 

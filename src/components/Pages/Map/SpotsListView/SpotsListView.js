@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import classes from "../SpotsListView/SpotsListView.module.css";
-import SpotInfoCard from "../../components/SpotInfoCard/SpotInfoCard";
+import SpotInfoCard from "../SpotInfoCard/SpotInfoCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
