@@ -22,6 +22,19 @@ Skate spots finder using React, Mapbox API and Firebase.
 - Spots database is stored in Firebase.
 - Download iOS app to upload your local spot https://apps.apple.com/us/app/poty/id1551551068
 
+## Structure
+    .
+    ├── index.js (root file) 
+    ├── App.js (routing by React Router)
+    ├── actions (Redux actions)
+    ├── reducers (Redux reducers)
+    └── components 
+          ├── Pages (components corresponding each route)
+          ├── Layout (wrapper component to render mutual components (SideDrawer, Header, Footer))
+          └── UI(reusable component (modal,backdrop))
+ 
+
+
 
 ## Dependencies
 Libraries:
