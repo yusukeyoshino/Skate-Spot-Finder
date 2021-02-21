@@ -10,6 +10,13 @@ Demo Web page URL https://potyskateboards.com
 
 Skate spots finder using React, Mapbox API and Firebase.
 
+## Why I built this project
+
+Skateboarding was born in California. Then the culture expands rapidly to all over the world.
+Skater travel to foregin countries to explore the new skate spot.
+It's hard to find street skate spot because you can not use Google Map for searching street spots.
+Then I thought it would be helpful if there is a map specialized in skateboarding spots.
+
 
 ## How to use
 - Drag around the map and push "Search this area" button.
@@ -33,7 +40,9 @@ Skate spots finder using React, Mapbox API and Firebase.
           ├── Layout (wrapper component to render mutual components (SideDrawer, Header, Footer))
           └── UI(reusable component (modal,backdrop))
  
-
+## Upcoming Features
+- User authentication
+- Posting skate spots
 
 
 ## Dependencies
