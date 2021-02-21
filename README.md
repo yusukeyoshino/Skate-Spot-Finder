@@ -19,14 +19,12 @@ Then I thought it would be helpful if there is a map specialized in skateboardin
 
 
 ## How to use
-- Drag around the map and push "Search this area" button.
-- Feching skate spots within 50km from center using geohash query.
-- Click icons on map then the corresponding spot information card  moves to upfront.
-- Click spot information card then the spot moves to the center of the map.
-- Filtering spots by changing spot types in the header.
-
-## Features
-- Spots database is stored in Firebase.
+- Drag around the map and push "Search this area" button
+- Feching skate spots within 50km from center using geohash query
+- Click icons on map then the corresponding spot information card  moves to upfront
+- Click spot information card then the spot moves to the center of the map
+- Filtering spots by changing spot types in the header
+- Spots database is stored in Firebase
 - Download iOS app to upload your local spot https://apps.apple.com/us/app/poty/id1551551068
 
 ## Structure
