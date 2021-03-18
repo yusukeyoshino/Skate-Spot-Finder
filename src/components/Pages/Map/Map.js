@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
+import WeatherCard from "./WeatherCard/WeatherCard";
 import classes from "./Map.module.css";
 import "firebase/firestore";
 import spotIcon from "../../../assets/spot_icon.png";
@@ -10,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import * as actions from "../../../actions";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 const geolocateStyle = {
   position: "absolute",
@@ -30,6 +32,7 @@ const Map = () => {
   const [popupID, setPopupID] = useState(null);
   const [showSpotsList, setSpotsList] = useState(false);
   const [showSearchButton, setShowSearchButton] = useState(true);
+  const [weatherData, setWeatherData] = useState(null);
 
   const dispatch = useDispatch();
   const spotsState = useSelector(spotsSelector);
@@ -41,6 +44,17 @@ const Map = () => {
   useEffect(() => {
     dispatch(actions.toggleSpinner());
     dispatch(actions.fetchSpots());
+  }, []);
+
+  useEffect(() => {
+    const getWeatherJson = async () => {
+      const response = await axios.get(
+        `http://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      );
+      console.log(response);
+      setWeatherData(response.data);
+    };
+    getWeatherJson();
   }, []);
 
   const removeModal = () => {
@@ -172,6 +186,7 @@ const Map = () => {
         mapStyle={"mapbox://styles/yusukeyoshino/ckaqtjf8u1a0g1io2vgm7nsp9"}
       >
         {mapSpotData()}
+        <WeatherCard weatherData={weatherData} />
         <GeolocateControl
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}
