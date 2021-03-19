@@ -6,12 +6,61 @@
   right: 0;
   z-index: 100;
   width: 200px;
-  background: white;
+
+  border-bottom-left-radius: 10px;
+  padding: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(145, 145, 154, 1) 0%,
+    rgba(23, 81, 161, 1) 100%
+  );
+  color: white;
+  font-family: "Varela Round", sans-serif;
 }
 
 .description {
+  margin-bottom: 10px;
 }
 
 .degree {
   font-size: 40px;
+}
+
+.icon {
+  width: 100px;
+}
+
+@media (max-width: 960px) {
+  .wrapper {
+    left: 0;
+
+    width: 130px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+  }
+  .degree {
+    font-size: 16px;
+  }
+  .icon {
+    width: 70px;
+  }
+}
+
+@media (max-width: 520px) {
+  .wrapper {
+    flex-direction: column;
+    width: 80px;
+    padding: 8px;
+  }
+  .description {
+    margin-top: 20px;
+    font-size: 10px;
+  }
+  .degree {
+    font-size: 16px;
+  }
+  .icon {
+    width: 40px;
+  }
 }

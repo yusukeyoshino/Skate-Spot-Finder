@@ -8,14 +8,13 @@ const WeatherCard = ({ weatherData }) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.left}>
-        <div className={classes.description}>
-          {weatherData.weather[0].description}
-        </div>
+        <div className={classes.description}>Tokyo</div>
         <div className={classes.degree}>
-          {Math.round(weatherData.main.temp - 273.15)}
+          {Math.round(weatherData.main.temp - 273.15)}°C
         </div>
       </div>
       <img
+        className={classes.icon}
         src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
         alt=""
       />
