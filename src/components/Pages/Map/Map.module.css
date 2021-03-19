@@ -133,3 +133,16 @@ img {
   margin-top: 10px;
   font-weight: bold;
 }
+
+.geolocation_control {
+  position: absolute;
+  top: 0;
+  right: 200px;
+  margin: 10px;
+}
+
+@media (max-width: 960px) {
+  .geolocation_control {
+    right: 0;
+  }
+}

@@ -50,8 +50,8 @@
 @media (max-width: 520px) {
   .wrapper {
     flex-direction: column;
-    width: 80px;
-    padding: 8px;
+    width: 60px;
+    padding: 0;
   }
   .description {
     margin-top: 20px;
