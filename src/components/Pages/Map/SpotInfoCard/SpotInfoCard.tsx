@@ -2,12 +2,11 @@ import classes from "./SpotInfoCard.module.css";
 import React, { useEffect, useRef } from "react";
 import * as actions from "../../../../actions";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import {useTypedSelector} from "../../../../hooks/useTypedSelector"
 
-const spotsSelector = (state) => state.spots;
 
-const SpotTags = (spot) => {
-  return spot.type.map((type, index) => {
+const SpotTags = (spot:any) => {
+  return spot.type.map((type:string, index:number) => {
     if (type === "shop") {
       return (
         <div
@@ -36,12 +35,18 @@ const SpotTags = (spot) => {
   });
 };
 
-const SpotInfoCard = ({ spot }) => {
+interface SpotInfoCardProps {
+  spot: any
+}
+
+const SpotInfoCard = ({ spot }:SpotInfoCardProps) => {
   const dispatch = useDispatch();
-  const spotCardRef = useRef(null);
-  const spots = useSelector(spotsSelector).selectedSpots;
+  const spotCardRef = useRef<HTMLDivElement | null>(null);
+  const spots = useTypedSelector((state)=> state.spots.selectedSpots)
 
   useEffect(() => {
+    if(!spotCardRef.current) return;
+
     let cardPosition;
     if (window.innerWidth > 959) {
       cardPosition = spotCardRef.current.offsetTop - 55;

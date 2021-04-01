@@ -4,7 +4,7 @@ import classes from "./Modal.module.css";
 
 interface ModalProps {
   remove: ()=> any;
-  show: Boolean;
+  show: boolean;
   children: any;
 }
 

@@ -10,30 +10,26 @@ import SpotsListView from "./SpotsListView/SpotsListView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import * as actions from "../../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import SpotModel from "../../../Model/SpotModel"
 
 
-const spotsSelector = (state) => state.spots;
-const viewPortSelector = (state) => state.viewPort;
-const selectedSpotSelector = (state) => state.selectedSpot;
-const spotsPositionSelector = (state) => state.spotsPosition;
-const spinnerSelector = (state) => state.showSpinner;
+
 
 const Map = () => {
   const [isSpotDetail, setIsSpotDetail] = useState(false);
-  const [spotInfo, setSpotInfo] = useState(null);
-  const [popupID, setPopupID] = useState(null);
   const [showSpotsList, setSpotsList] = useState(false);
   const [showSearchButton, setShowSearchButton] = useState(true);
   const [weatherData, setWeatherData] = useState(null);
 
   const dispatch = useDispatch();
-  const spotsState = useSelector(spotsSelector);
-  const viewPort = useSelector(viewPortSelector);
-  const selectedSpot = useSelector(selectedSpotSelector);
-  const spotsPosition = useSelector(spotsPositionSelector);
-  const showSpinner = useSelector(spinnerSelector);
+
+  const {spots:spotsState,viewPort,selectedSpot,spotsPosition,showSpinner} = useTypedSelector((state)=>state)
+
+
+
 
   useEffect(() => {
     dispatch(actions.toggleSpinner());
@@ -45,24 +41,14 @@ const Map = () => {
       const response = await axios.get(
         `http://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
-      console.log(response);
       setWeatherData(response.data);
     };
     getWeatherJson();
   }, []);
 
-  const removeModal = () => {
-    setIsSpotDetail(false);
-  };
 
-  const showPopup = (e) => {
-    setPopupID(parseInt(e.target.id));
-  };
-  const hidePopup = (e) => {
-    setPopupID(null);
-  };
 
-  const renderMarker = (spot) => {
+  const renderMarker = (spot:SpotModel) => {
     if (spot.type.includes("shop")) {
       return <img id={spot.document_id} alt="" src={shopIcon} />;
     } else if (spot.type.includes("park")) {
@@ -72,7 +58,7 @@ const Map = () => {
     }
   };
 
-  const scaleIcon = (spot) => {
+  const scaleIcon = (spot:SpotModel) => {
     if (
       selectedSpot !== null &&
       selectedSpot.document_id === spot.document_id
@@ -83,8 +69,8 @@ const Map = () => {
     }
   };
 
-  const moveSpotsCards = (index) => {
-    const spotsListElement = window.document.getElementById("spots_list");
+  const moveSpotsCards = (index:number) => {
+    const spotsListElement = window.document.getElementById("spots_list") as HTMLDivElement;
     const cardPosition = spotsPosition[index];
 
     if (window.innerWidth > 959) {
@@ -107,7 +93,7 @@ const Map = () => {
       return;
     }
 
-    return spotsState.selectedSpots.map((spot, index) => (
+    return spotsState.selectedSpots.map((spot:SpotModel, index:number) => (
       <React.Fragment key={spot.document_id}>
         <Marker
           key={spot.document_id}
@@ -121,8 +107,6 @@ const Map = () => {
                 setSpotsList(true);
               }
             }}
-            onMouseEnter={showPopup}
-            onMouseLeave={hidePopup}
             className={classes.button}
             style={scaleIcon(spot)}
           >
@@ -168,7 +152,6 @@ const Map = () => {
         spots={spotsState.selectedSpots}
         show={showSpotsList}
         setSpotsList={setSpotsList}
-        style={{ display: `${showSpotsList ? "block" : "none"}` }}
       />
       <ReactMapGL
         {...viewPort}

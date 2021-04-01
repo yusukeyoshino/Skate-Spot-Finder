@@ -1,7 +1,16 @@
 import classes from "./WeatherCard.module.css";
 import React from "react";
 
-const WeatherCard = ({ weatherData }) => {
+interface WeatherCardProps {
+  weatherData: {
+    base: string;
+    main: {temp: number};
+    name: string;
+    weather: any;
+  } | null
+}
+
+const WeatherCard = ({ weatherData }:WeatherCardProps) => {
   if (!weatherData) {
     return <></>;
   }

@@ -5,17 +5,21 @@ import spotIcon from "../../../../assets/spot_icon.png";
 import parkIcon from "../../../../assets/park_icon.png";
 import shopIcon from "../../../../assets/shop_icon.png";
 import * as actions from "../../../../actions";
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
+import {useTypedSelector} from "..//../../../hooks/useTypedSelector";
 
-const spotsSelector = (state) => state.spots;
+interface SpotsFilterProps {
+  radio: string;
+  setRadio: (radioValue:string)=> any;
+}
 
-const SpotsFilter = ({ radio, setRadio }) => {
+const SpotsFilter = ({ radio, setRadio }:SpotsFilterProps) => {
   const dispatch = useDispatch();
-  const spotsState = useSelector(spotsSelector);
+  const spotsState = useTypedSelector((state)=>state.spots);
 
   const dropDownElement = useRef(null);
 
-  const filterSpots = (type) => {
+  const filterSpots = (type:string) => {
     dispatch(actions.resetSpotsPosition());
     dispatch(actions.filterSpots(spotsState.spots, type));
   };
@@ -35,11 +39,11 @@ const SpotsFilter = ({ radio, setRadio }) => {
     }
   };
 
-  const getInputValue = (e) => {
-    const radioValue = e.currentTarget.children[1].value;
+  const getInputValue = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+     const radioValue = (e.currentTarget.children[1] as HTMLInputElement).value;
 
-    setRadio(radioValue);
-    filterSpots(radioValue);
+     setRadio(radioValue);
+     filterSpots(radioValue);
   };
 
   const onClickIconForDropdown = () => {};

@@ -28,7 +28,7 @@ const App = () => {
       <Router>
         <Layout radio={radio} setRadio={setRadio}>
           <Route path="/" exact>
-            <Map radio={radio} />
+            <Map  />
           </Route>
           <Route path="/about" component={About} />
           <Route path="/addspot" component={AddSpot} />

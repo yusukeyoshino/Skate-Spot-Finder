@@ -1,22 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import {useTypedSelector} from "../../../../hooks/useTypedSelector"
 import classes from "../SpotsListView/SpotsListView.module.css";
 import SpotInfoCard from "../SpotInfoCard/SpotInfoCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
-const spinnerSelector = (state) => state.showSpinner;
+interface SpotsListViewProps {
+  spots: any;
+  show: boolean;
+  setSpotsList: any
+}
 
-const SpotsListView = ({ spots, show, setSpotsList }) => {
-  //   const toggleListView = () => {
-  //     setShowListView(false);
-  //   };
 
-  const showSpinner = useSelector(spinnerSelector);
+
+const SpotsListView = ({ spots, show, setSpotsList }:SpotsListViewProps)=> {
+
+  const showSpinner = useTypedSelector(state => state.showSpinner);
 
   const renderContents = () => {
     if (spots.length > 0) {
-      return spots.map((spot) => (
+      return spots.map((spot:any) => (
         <SpotInfoCard key={spot.document_id} spot={spot} />
       ));
     } else if (!showSpinner) {
