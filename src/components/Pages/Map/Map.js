@@ -13,12 +13,6 @@ import * as actions from "../../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-// const geolocateStyle = {
-//   position: "absolute",
-//   top: 0,
-//   right: 0,
-//   margin: 10,
-// };
 
 const spotsSelector = (state) => state.spots;
 const viewPortSelector = (state) => state.viewPort;
