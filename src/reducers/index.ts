@@ -5,10 +5,14 @@ import spotsPositionReduer from "./spotsPositionReduer";
 import spotsReducer from "./spotsReducer";
 import viewPortReducer from "./viewPortReducer";
 
-export default combineReducers({
+const reducers =  combineReducers({
   spots: spotsReducer,
   viewPort: viewPortReducer,
   selectedSpot: selectedSpotReducer,
   spotsPosition: spotsPositionReduer,
   showSpinner: spinnerReducer,
 });
+
+export default reducers;
+
+export type RootState = ReturnType<typeof reducers>;

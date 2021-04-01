@@ -1,6 +1,16 @@
 import { FETCH_SPOTS, FILTER_SPOTS } from "../actions/types";
 
-export default function (state = { spots: [], selectedSpots: [] }, action) {
+interface SpotsState {
+  spots: any[];
+  selectedSpots: any[];
+}
+
+const initialState = {
+  spots: [],
+  selectedSpots: []
+}
+
+export default function (state:SpotsState = initialState, action:any) {
   switch (action.type) {
     case FETCH_SPOTS:
       return { spots: action.payload, selectedSpots: action.payload };

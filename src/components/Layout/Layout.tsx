@@ -6,7 +6,13 @@ import SideDrawer from "../SideDrawer/SideDrawer";
 import SpotsFilter from "../Pages/Map/SpotsFilter/SpotsFilter";
 import HowToUse from "../HowToUse/HowToUse";
 
-const Layout = (props) => {
+interface LayoutProps {
+  radio: string;
+  setRadio: React.Dispatch<React.SetStateAction<string>>;
+  children: any
+}
+
+const Layout = (props:LayoutProps) => {
   const [isLinkClicked, setIsLinkClicked] = useState(false);
   const [toggleSideDrawer, setToggleSideDrawer] = useState(false);
 
@@ -15,12 +21,12 @@ const Layout = (props) => {
   };
 
   let navAboutClass = isLinkClicked
-    ? [`${classes.nav_about} ${classes.nav_about_active}`]
-    : [`${classes.nav_about}`];
+    ? `${classes.nav_about} ${classes.nav_about_active}`
+    : `${classes.nav_about}`;
 
   let navHomeClass = isLinkClicked
-    ? [`${classes.nav_home} ${classes.nav_home_active}`]
-    : [`${classes.nav_home}`];
+    ? `${classes.nav_home} ${classes.nav_home_active}`
+    : `${classes.nav_home}`;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -57,7 +63,6 @@ const Layout = (props) => {
       </div>
       <HowToUse showModal={showModal} setShowModal={setShowModal} />
       <SideDrawer
-        show={showModal}
         setShowModal={setShowModal}
         remove={() => setToggleSideDrawer(false)}
         isOpened={toggleSideDrawer}

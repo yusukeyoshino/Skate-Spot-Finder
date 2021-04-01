@@ -3,7 +3,13 @@ import classes from "./SideDrawer.module.css";
 import { Link } from "react-router-dom";
 import Backdrop from "../UI/Backdrop/Backdrop";
 
-const SideDrawer = (props) => {
+interface SideDrawerProps {
+  remove: ()=> any;
+  isOpened: boolean;
+  setShowModal: (show:boolean)=>any;
+}
+
+const SideDrawer = (props:SideDrawerProps) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
   if (props.isOpened) {
     attachedClasses = [classes.SideDrawer, classes.Open];
