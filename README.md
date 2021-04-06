@@ -45,6 +45,7 @@ Then I thought it would be helpful if there is a map specialized in skateboardin
 
 ## Dependencies
 Libraries:
+- TypeScript
 - React
 - React Hooks
 - React Router
