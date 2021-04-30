@@ -31,8 +31,9 @@ Then I thought it would be helpful if there is a map specialized in skateboardin
     .
     ├── index.js (root file) 
     ├── App.js (routing by React Router)
-    ├── actions (Redux actions)
-    ├── reducers (Redux reducers)
+    ├── hooks (React hooks utils function)
+    ├── Model (Types)
+    ├── state (Redux actions & reducers)
     └── components 
           ├── Pages (components corresponding each route)
           ├── Layout (wrapper component to render mutual components (SideDrawer, Header, Footer))
