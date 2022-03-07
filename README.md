@@ -1,6 +1,6 @@
 # Tokyo Street Spot Finder
 
-Demo Web page URL https://potyskateboards.com
+Demo Web page URL https://tokyo-skate-spots.netlify.app/
 
 ![tokyo street spot finder](https://github.com/yusukeyoshino/portfolio/blob/master/src/images/ezgif.com-gif-maker.gif?raw=true)<br/>
 
